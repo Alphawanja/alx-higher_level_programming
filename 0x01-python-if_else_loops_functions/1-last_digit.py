@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import random
-random = random.randint(-10000, 10000)
+number = random.randint(-10000, 10000)
 if number < 0:
     x = - 1 * (-number % 10)
 else:
