@@ -3,6 +3,13 @@
 #include <listobject.h>
 #include <bytesobject.h>
 
+/**
+ * print_python_bytes - prints python bytes
+ * @p: PyObject
+ *
+ * Return: no return
+ */
+
 void print_python_bytes(PyObject *p)
 {
 	long int size;
