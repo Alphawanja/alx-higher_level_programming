@@ -59,7 +59,7 @@ class Rectangle:
         return (self.width + self.height) * 2
 
     def __str__(self):
-        """ Return string to print rectangle with # """
+        """ Return string to print rectangle with '#' """
         if self.width == 0 or self.height == 0:
             return ''
         to_print = ''
