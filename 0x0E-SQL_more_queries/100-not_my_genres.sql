@@ -1,16 +1,17 @@
 -- Lists all genres not linked to the show Dexter
 -- Query to perform operation
-SELECT gr.name FROM tv_genres AS gr
+SELECT tv_genres.name
+FROM tv_genres
 LEFT JOIN
 (
-	SELECT gr.id FROM tv_genres AS gr
-	JOIN tv_show_genres AS shgr
-		ON gr.id=shgr.genre_id
-	JOIN tv_shows AS sh
-		ON shgr.show_id=sh.id
-	WHERE sh.title = "Dexter"
-	ORDER BY gr.name ASC
-) AS subdx
-ON subdx.id = gr.id
-WHERE subdx.id IS NULL
-ORDER BY gr.name ASC;
+	SELECT tv_genres.id, tv_genres.name -- Query to get Dexter genres
+	FROM tv_genres
+	JOIN tv_show_genres
+		ON tv_genres.id = tv_show_genres.genre_id
+	JOIN tv_shows
+		ON tv_show_genres.show_id = tv_shows.id
+	WHERE tv_shows.title = "Dexter"
+	ORDER BY tv_genres.id
+) dexter_genres ON dexter_genres.id = tv_genres.id
+WHERE dexter_genres.id IS NULL
+ORDER BY tv_genres.name;
